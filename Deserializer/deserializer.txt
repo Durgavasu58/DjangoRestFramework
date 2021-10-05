@@ -1,0 +1,25 @@
+----------------- @BytesIO()@ -----------
+
+A stream implementation using an in-memory bytes buffer. It inherits  BufferdIO Bas. The buffer is  discarded  when the close() method is called
+ex:- 
+
+-->import io
+-->stream = io.BytesIO(json_data)
+
+----------------- @JSONParser@ -----------
+ this is used to parse json data to python native data
+ex:- 
+
+-->from rest_framework.parsers import JSONParser
+-->parsed_data = JSONParser().parse(stream)
+
+----------------- @DeSerializer@ -----------
+DeSerializer allows us to parsed data to be converted back into complex types, after first validating the incoming data
+
+creating serializer Object
+serializer = StudentSerializer(data = parsed_data)
+
+-->Validated Data
+serializers.is_valid()
+serializer.validated_data
+serializer.errors

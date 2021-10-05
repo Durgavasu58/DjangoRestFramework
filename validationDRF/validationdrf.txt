@@ -1,0 +1,24 @@
+------------- Validation --------------------------
+
+-->Field level validation
+-->Object level validation
+-->Validators
+
+~~>Field level validation
+
+	def validate_rollno(self,value):
+		if value >= 200:
+			raise serializers.ValidationError('Seats are full')
+		return value
+
+~~>Object level validation
+
+requires when multiple fields we do object level validation by adding a method called validate() to Serializer subclass
+
+syntax:- def validate(self, data)
+example:- def validate(self, data)
+Where, data is the dictionary of field values
+
+~~> validators
+
+Most of the time youre dealing
