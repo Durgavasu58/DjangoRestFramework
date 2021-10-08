@@ -1,6 +1,7 @@
 import requests
 import json
 
+
 URL = "http://127.0.0.1:8000/stdcreate/"
 
 def get_data(id = None):
@@ -14,12 +15,12 @@ def get_data(id = None):
 	print(data)
 
 # get_data()	
-
+	
 def post_data():
 	data ={
-	'name': 'ravi',
-	'rollno': 104,
-	'city': 'mumbai'
+	'name': 'sai',
+	'rollno': 109,
+	'city': 'delhi'
 	}
 
 	json_data = json.dumps(data)
@@ -28,11 +29,11 @@ def post_data():
 	print(data)
 
 # post_data()
-
 	
+		
 def update_data():
 	data ={
-	'id': 1, 
+	'id': 2, 
 	'name': 'rohit',
 	'city': 'goa'
 	}
@@ -43,9 +44,9 @@ def update_data():
 	print(data)
 
 # update_data()
-
+	
 def delete_data():
-	data ={'id': 5 }
+	data ={'id': 2 }
 	json_data = json.dumps(data)
 	r = requests.delete(url = URL, data = json_data)
 	data = r.json()
