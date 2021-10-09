@@ -1,16 +1,13 @@
-from django.shortcuts import render
-from rest_framework.decorators import api_view 
+from django.shortcuts import render 
 from rest_framework.response import Response
 from .models import Student
 from .serializer import StudentSerializer
 from rest_framework import status
+from rest_framework.views import APIView
 
-
-@api_view(['GET','POST','PUT','PATCH','DELETE'])
-def student_api(request,pk=None): # pk is added for individual data
-
-    if request.method == 'GET':
-        id = pk # pk is added
+class StudentAPI(APIView):
+    def get(self,request,pk=None,format=None):
+        id = pk 
         #Getting the data by id
         if id is not None:
             stu = Student.objects.get(id=id)
@@ -21,14 +18,16 @@ def student_api(request,pk=None): # pk is added for individual data
         serializer = StudentSerializer(stu,many=True)
         return Response(serializer.data)
 
-    if request.method == 'POST':
+
+    def post(self,request,format=None):
         serializer = StudentSerializer(data = request.data)
         if serializer.is_valid():
             serializer.save()
             return Response({'msg':'Data Created'},status=status.HTTP_201_CREATED)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+        
 
-    if request.method == 'PUT':
+    def put(self,request,pk,format=None):
         id = pk
         stu = Student.objects.get(pk=id)
         serializer = StudentSerializer(stu, data=request.data)
@@ -37,7 +36,7 @@ def student_api(request,pk=None): # pk is added for individual data
             return Response({'msg':'Compelete Data Updated'})
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
-    if request.method == 'PATCH':
+    def patch(self,request,pk,format=None):
         id = pk
         stu = Student.objects.get(pk=id)
         serializer = StudentSerializer(stu, data=request.data, partial=True)
@@ -45,8 +44,8 @@ def student_api(request,pk=None): # pk is added for individual data
             serializer.save()
             return Response({'msg':'Partialy Data Updated'})
         return Response(serializer.errors)
-    
-    if request.method == 'DELETE':
+
+    def delete(self,request,pk,format=None):
         id = pk
         stu = Student.objects.get(pk=id)
         stu.delete()
