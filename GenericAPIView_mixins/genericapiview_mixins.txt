@@ -1,0 +1,42 @@
+----------------------------------------- GenericAPIView  --------------------
+This class extends REST framework's APIView class, adding commonly required behaviour for standard list and detail views
+
+Attributes:---  
+        1. querset --> The querset  that should be used  be used for returning objects from this view. Typically, must either set this  attribute
+                     or override the get_queryset() method. if your are overriding a view method, it is important that you can  call
+                     get_queryset() instead of accessing this property directly, as queryset will get evaluated once, and those results
+                     will be cached for all subsequent requests.
+
+        2. serillizer_class --> The serializer class that should be used for validating and deserializing input, and for serializing output.
+                                Typically, you must either set this attribute, or  overide the get_serializer_class() method
+
+        3. lookup_field --> The model field that should be used to for performing object lookup of  individual model instances. Defaults to 'pk'
+
+        4. lookup_url_kwargs --> The  URL Keyword argument that should be used for object lookup. The URL conf should include a keyword argument
+                                corresponding to this value. If unset this defaults to using the  same value as lookup_field.
+
+        5. pagination_class --> The pagination class that should  be used
+
+-----------------------------------------  Mixins --------------------      
+
+One of the big wins of using class based views is that it allows us to easily compose resusable bits of behaviour.
+
+The CRUD operations that been implemented are similar to model-backend APIViews are create.
+
+1. Those bits of common behaviour are implemented in REST Framework's mixin classes
+2. The Mixins classes provide the actions that are used to provide the basic view behaviour
+
+* ListModelMixin
+* CreateModelMixin
+* RetrieveModelMixin
+* UpdateModelMixin
+* DestroyModelMixin
+
+* ListModelMixin--> It provides a list(request, *args, **kwargs) method, that implements listing a queryset.
+                    If the queryset is populated, this returns 200 OK Response, with a serializer representation of the
+                    queryset as the body of the response. The response data may optionally be paginated
+
+* CreateModelMixin --> It provides a create(request, *args, **kwargs) method, that implements creating and saving a new model instances.
+                    If an object is created this returns a 201 Created Response  with a serializer representation of the
+                    queryset as the body of the response. If the Representation contains a key named url, then the Location header of the response will be populated with that value.
+                    
