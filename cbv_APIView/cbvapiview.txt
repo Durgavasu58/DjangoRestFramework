@@ -1,0 +1,9 @@
+-------------------------------- CBV API VIEW -----------------------
+
+API View classes are different from regular View classes in the following ways:
+    * Requests passesd to the handler methods will be REST framework's Request instances, not Django's HttpRequest instance.
+    * Handler methods may return REST framework's Response, instead of  Django's HttpResponse. The view will manage content negotiation
+        and setting the correct
+    * Any APIException exceptions will be caught and medicated into appropriate responses.
+    * Incoming requests will be authenticated and appropriate permission and/or throttle checks will be run before
+      dispatching the request to the handler method.
