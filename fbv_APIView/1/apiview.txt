@@ -1,0 +1,39 @@
+-------------------------------- FBV API VIEW -----------------------
+1. The wrapper provide a few bits of functionality for such as making sure you receive Request instances in your view, 
+    and adding context to Response objects so that content negotiation can be performed
+
+2. The wrapper provides behaviour such as a returning 405 Method Not Allowed responses when appropriate,
+    and handling any ParseError exceptions that occur when accessing request.data with malformed input
+
+3. By default only GET methods will be accepted. Other methods will respond with "405 Method Not Allowed"    
+syntax:- @api_view()
+ 
+         @api_view(['GET', 'POST','PUT','DELETE'])
+         def fucntion_name(request):
+            ................
+        
+------------------------------------------ Request ----------------------------------------
+1. REST Framework's Request objects provide flexible request parsing that allows you to treat requests with JSON
+data or other media types in the same way that you would normally deal with form data
+
+2. request.data--> request.data returns the parsed content of the request.body.
+                   This is similar to the standard request.POST and request.FILES attributes except that:
+                   * It includes all parse content, including file and non-file inputs.
+                   * It supports parsing the content of HTTP methods other than POST, meaning that you can access the content of PUT and PATCH requests.
+                   * It also supports REST Framework's flexible request parsing, rather than just supporting form data.
+                     For example you can handle incoming JSON data in the same way that you handle incoming form data.
+3. request.method--> request.method returns the uppercased string representation of the request's HTTP method.
+4. request.query_params --> request.query_params is a more correctly named synonym for request.GET
+
+    For clarity inside your code, we recommend using request.query_params instead of the Django's standard request.GET.
+    Doing so will keep your code base more correct and obvious - any HTTP method type may inlcude query parameters,not just GET requests.
+
+------------------------------------------ Response ----------------------------------------
+1.  REST Framework supports HTTP content negotiation by providing a Response class which allows you to return content that
+    can be rendered into multiple content types, depending on the client request
+
+2. Response objects are initialized with data, which should consist of native Python primitives. REST Framework
+   then uses standard HTTP content negotiation to determine how it should render the final response content.
+
+3. Response class simply provides a nicer interface for returning content-negotiated Web API reponses, that can
+    be rendered to multiple formats.

@@ -11,7 +11,6 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def student_api(request):
-
 	# Get method
 	if request.method == 'GET':
 		json_data = request.body

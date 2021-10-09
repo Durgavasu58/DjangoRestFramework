@@ -1,0 +1,8 @@
+--------------------------------------------- ModelSerializer Class ---------------
+The ModelSerializer class provides a shortcut that lets you automatically create a Serializer class with fields that correspond to the Model fields.
+
+-->In this folder we are doing validations for ModelSerializer
+    1. field level validation for ModelSerializer
+    2. Object level validation for ModelSerializer
+    3. Validators for ModelSerializer
+	
