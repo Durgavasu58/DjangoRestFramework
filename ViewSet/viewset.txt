@@ -1,0 +1,25 @@
+----------------------------------------- VIEW SET ---------------------------------------
+Django REST Framework allows you to combine the logic for set of related views in a single class, called a Viewset.
+
+There are two main advantages of using a Viewset over using a View Class.
+    * Repeated logic can be combined into a single class
+    * By using routers, we no longer to deal with  wiring up the URL conf ourselves.
+
+----------------------------------------- VIEW SET CLASS ---------------------------------------    
+A ViewSet class is simply a type of class-based View, that does not provide any method such as get() or post()
+ and instead provides actions such as list() and create()
+
+ * list() --> Get All records 
+ * retrieve() --> Get single Record
+ * create() --> Create/Insert Record
+ * update() --> Update Record Completely
+ * partial_update() --> Update Record Partially
+ * destroy() --> Delete Record
+
+ During disptach, the following attributes are available on the Viewset:-
+
+ * basename - the base to use for the URL names that are created.
+ * action - the name of the current action (e.g., list, create)
+* detail - boolean indicating if the current action is configured for a list or detail view.
+* suffix -  the dispaly suffix for the viewset. This argument is manually exclusive to suffix
+* desciption - the display description for the individual view of a  viewset.
