@@ -1,4 +1,4 @@
------------------------------------------ GenericAPIView  --------------------
+----------------------------------------- GenericAPIView --------------------
 This class extends REST framework's APIView class, adding commonly required behaviour for standard list and detail views
 
 Attributes:---  
