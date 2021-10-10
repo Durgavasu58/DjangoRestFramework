@@ -1,0 +1,47 @@
+---------------------------------------------------  Authentication --------------------------------------
+Authentication is the mechanism of assocaiating an incoming request with a set of identifying credentials, such as the user
+the request came from, or the token that it was signed with. The permission and throttling policies can then  use those 
+credentials to determine if the request should be permitted.
+
+REST Framework provides a number of authentication schemes out of the box, and also allows you to implement custom schemes.
+
+* BasicAuthentication
+* SessionAuthentication
+* TokenAuthentication
+* RemoteUserAuthentication
+* Custom authentication
+
+* BasicAuthentication --> This authentication scheme uses HTTP Basic Authentication, signed against a user's "username and password"
+                         BasicAuthentication is generally only appropriate for testing
+    If succesfully authenticated, BasicAuthentication provides the following credentials.
+    * request.user will be a Djagno User instance
+    * request.auth will be None
+    Unauthenticated responses that are denied permission will result in an HTTP 401
+    Unauthorized response with an appropriate WWW-Authenticate header. For
+
+    example:- 
+            WWW-Authenticate: Basic realm="api"
+
+Note:-- If you use BasicAuthentication in production you must ensure that your API is only available over https.
+
+        You should also ensure that your API clients will always re-request the username and password at login, and will
+        never store those details to presistent storage
+
+---------------------------------------------------  Permission --------------------------------------
+
+1. Permissions are used to grant or deny access for different classes of users to different parts of the API.
+2. Permission checks are always run at the very start of the view, before any other code is allowed to proceed.
+3. Permission checks will typically use the authentication information in the request.user and request.auth properties to
+    determine if the incoming request should be permitted
+
+------------------------------------------ Permission Clases --------------------------------
+
+Permissions in REST Framework are always defined as a list of permission classes.
+* AllowAny
+* IsAuthenticated
+* IsAdminUser
+* IsAuthenticatedOrReadOnly
+* DjangoModelPermissions
+* DjangoModelPermissionsOrAnonReadOnly
+* DjangoObjectPermissions
+* Custom Permissions
