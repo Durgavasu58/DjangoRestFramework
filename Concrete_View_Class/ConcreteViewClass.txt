@@ -1,0 +1,17 @@
+------------------------------------- Concrete View Class -----------------------------
+The following  classes are the concrete generic views
+The  view classes can be  imported from rest_framework.generics
+
+* ListAPIView               * ListCreateAPIView 
+* CreateAPIView             * RetrieveUpdateAPIView
+* RetrieveAPIView           * RetrieveDestroyAPIView
+* UpdateAPIView             * RetrieveUpdateDestroyAPIView
+* DestroyAPIView
+
+* ListAPIView --> It is used for read-only endpoints to represent a collection of model instances. 
+                  It provides a get method handler
+* CreateAPIView --> It is used for create-only endpoints. It provides a post method handler                 
+
+* RetrieveAPIView  --> It is used for read-only endpoints to represent a single model instances. It provides a get method handler
+* UpdateAPIView --> It is used for update-only endpoints to represent a single model instances. It provides put and patch method handler
+* DestroyAPIView --> It is used for delete-only endpoints to represent a single model instances. It provides delete method handler
