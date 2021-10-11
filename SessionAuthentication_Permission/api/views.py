@@ -16,9 +16,9 @@ class StudentModelViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
     authentication_classes = [SessionAuthentication]
-    # permission_classes = [IsAuthenticated] # Open the url incognito broser u can login with username and password
-#     permission_classes = [AllowAny]
-    # permission_classes = [IsAdminUser] # Whehter user is not having staff user access  
-    # permission_classes = [IsAuthenticatedOrReadOnly]
-    # permission_classes = [DjangoModelPermissions]
+    permission_classes = [IsAuthenticated] # Open the url incognito broser u can login with username and password
+    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser] # Whehter user is not having staff user access  
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [DjangoModelPermissions]
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
