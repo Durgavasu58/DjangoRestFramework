@@ -1,0 +1,50 @@
+-----------------------------------------  Authentication ---------------------------------------
+Third party packages:- 
+
+* Django OAuth Tookit
+* JSON Web Token Authentication
+* Hawk HTTP Authentication
+* HTTP Signature Authentication
+* Djoser
+* django-rest-auth / dj-rest-auth
+* django-rest-framework-social-oauth2
+* django-rest-knox
+* drfpasswordless
+
+
+https://jwt.io/
+
+---------------------------------------- Simple JWT ----------------------------------
+
+Simple JWT provides a JSON WEB Token Authentication backend for the Django REST Framework. 
+It aims to cover the most common use cases of JWTs by offering a conservative set of default features. 
+It alse aims to be easily extensible in case a desired feature is not present.
+
+pip install djangorestframework-simplejwt
+
+You can also include  a route for Simple JWT's Token Verify View ifyou wish to allow API users to verify HMAC-signed 
+tokens without having access to your signing key
+
+
+urls.py 
+
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView,TokenVerifyView
+
+urlpatterns = [
+        path('gettoken/',TokenObtainPairView.as_view(),name='token_obtain_pair'),
+        path('refreshtoken/',TokenRefreshView.as_view(),name='token_refresh'),
+        path('verifytoken/',TokenVerifyView.as_view(),name='token_verify'),
+
+]
+
+
+ Generate token --> http POST http://127.0.0.1:8000/gettoken/ username="user" password="User@123"
+ verify token --> http POST http://127.0.0.1:8000/verifytoken/ token=' PUT ACCESS TOKEN  '
+ refresh token --> http POST http://127.0.0.1:8000/refreshtoken/ refresh=' PUT refresh TOKEN  '
+
+
+IN JWT Authentication Inserting the Data --> http  -f POST  http://127.0.0.1:8000/studentapi/ name=vasu rollno=522 city=us "Authorization:Bearer c9771565e9229a1bbdf04033ec36e469b15a8fef"
+
+IN JWT Authentication Updating the Data --> http PUT  http://127.0.0.1:8000/studentapi/1/ name=siva rollno=322 city=london "Authorization:Bearer c9771565e9229a1bbdf04033ec36e469b15a8fef"
+
+IN JWT Authentication Deleting the Data --> http DELETE  http://127.0.0.1:8000/studentapi/1/ "Authorization:Bearer c9771565e9229a1bbdf04033ec36e469b15a8fef"
