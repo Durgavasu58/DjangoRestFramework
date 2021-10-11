@@ -1,0 +1,12 @@
+pip install httpie
+
+get the data --> http http://127.0.0.1:8000/studentapi/
+
+Get the data using Token --> http GET http://127.0.0.1:8000/studentapi/ "Authorization:Token c9771565e9229a1bbdf04033ec36e469b15a8fef"
+
+Inseting the data --> http  -f POST  http://127.0.0.1:8000/studentapi/ name=vasu rollno=522 city=us "Authorization:Token c9771565e9229a1bbdf04033ec36e469b15a8fef"
+
+Updating data --> >http PUT http://127.0.0.1:8000/studentapi/3/ name=saha rollno=402 city=lake "Authorization:Token c9771565e9229a1bbdf0403
+
+Delete data --> http DELETE http://127.0.0.1:8000/studentapi/3/  "Authorization:Token c9771565e9229a1bbdf04033ec36e469b15a8fef"
+
