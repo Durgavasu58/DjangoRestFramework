@@ -1,0 +1,11 @@
+----------------------------------------------- Custom Authentication --------------------------------
+
+To implement a custom authentication scheme, subclass
+BaseAuthentication and override the authenticate(self,request) method.
+
+The method should return a two-tuple of (user,auth) if authentication succeds. or None otherwise.
+
+
+ Getting the data --> http://127.0.0.1:800/studentapi/?username=admin
+
+ Getting the data --> http://127.0.0.1:8000/studentapi/1/?username=admin
