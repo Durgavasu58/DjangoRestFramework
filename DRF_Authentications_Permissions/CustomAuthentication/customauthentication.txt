@@ -8,4 +8,4 @@ The method should return a two-tuple of (user,auth) if authentication succeds. o
 
  Getting the data --> http://127.0.0.1:800/studentapi/?username=admin
 
- Getting the data --> http://127.0.0.1:8000/studentapi/1/?username=admin
+ Getting the single data --> http://127.0.0.1:8000/studentapi/1/?username=admin
